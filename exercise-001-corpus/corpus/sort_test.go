@@ -1,6 +1,9 @@
 package corpus
 
-import "testing"
+import (
+	"testing"
+	"github.com/stretchr/testify/assert"
+)
 
 func TestCorpusSortWordFreqs(t *testing.T) {
 	freqs := []WordFreq{
@@ -14,10 +17,9 @@ func TestCorpusSortWordFreqs(t *testing.T) {
 		WordFreq{`i`, 1},
 		WordFreq{`us`, 1},
 	}
-	expected := []string{`they`, `our`, `his`, `be`, `am`, `he`, `a`, `i`, `us`}
-	for idx, word := range expected {
-		if freqs[idx].Str != word {
-			t.Errorf("Expected [%s] to eq [%s]", freqs[idx].Str, word)
-		}
+	SortWordFreqs(freqs)
+	expected := []string{`they`, `our`, `his`, `be`, `he`, `am`, `i`, `us`, `a`}
+	for i, word := range expected {
+		assert.Equal(t, freqs[i].Str, word)
 	}
 }

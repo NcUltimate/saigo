@@ -1,6 +1,9 @@
 package corpus
 
-import "testing"
+import (
+	"testing"
+	"github.com/stretchr/testify/assert"
+)
 
 func TestCorpusAsFrequencyMap(t *testing.T) {
 	strs := []string{`a`, `b`, `b`, `c`, `c`, `c`}
@@ -13,9 +16,7 @@ func TestCorpusAsFrequencyMap(t *testing.T) {
 		`d`: 0,
 	}
 	for key, val := range expected {
-		if actual[key] != val {
-			t.Errorf("(%s) Expected [%d], got [%d]", key, val, actual[key])
-		}
+		assert.Equal(t, actual[key], val)
 	}
 }
 
@@ -26,12 +27,7 @@ func TestCorpusAsWordFreqs(t *testing.T) {
 		`c`: 3,
 	}
 	actual := AsWordFreqs(counts)
-	for idx, _ := range actual {
-		if actual[idx].Count != counts[actual[idx].Str] {
-			str := actual[idx].Str
-			ec := counts[actual[idx].Str]
-			ac := actual[idx].Count
-			t.Errorf("(%s) Expected Count of [%d], got [%d]", str, ec, ac)
-		}
+	for _, freq := range actual {
+		assert.Equal(t, freq.Count, counts[freq.Str])
 	}
 }

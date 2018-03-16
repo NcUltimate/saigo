@@ -10,7 +10,7 @@ type WordFreq struct {
 func AsFrequencyMap(words []string) map[string]int {
 	counts := make(map[string]int)
 	for _, word := range words {
-		counts[word] += 1
+		counts[word]++
 	}
 	return counts
 }
@@ -18,8 +18,8 @@ func AsFrequencyMap(words []string) map[string]int {
 // converts a map[string]int to a []WordFreq
 func AsWordFreqs(counts map[string]int) []WordFreq {
 	wordFreqs := make([]WordFreq, 0, len(counts))
-	for word := range counts {
-		wordFreqs = append(wordFreqs, WordFreq{word, counts[word]})
+	for word, count := range counts {
+		wordFreqs = append(wordFreqs, WordFreq{word, count})
 	}
 	return wordFreqs
 }
