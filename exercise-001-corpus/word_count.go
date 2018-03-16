@@ -21,19 +21,17 @@ func generateAndPrintWordFreqs(words []string) {
 func ingestFile(filename string) (string, error) {
 	buff, err := ioutil.ReadFile(filename)
 	if err != nil {
-		return "", errors.New("Cannot read file.")
-	} else {
-		return string(buff), nil
+		return "", errors.New("cannot read file")
 	}
+	return string(buff), nil
 }
 
 // try to get the filename from ARGV
 func fileName() (string, error) {
 	if len(os.Args) < 2 {
-		return "", errors.New("No filename provided.")
-	} else {
-		return os.Args[1], nil
+		return "", errors.New("no filename provided")
 	}
+	return os.Args[1], nil
 }
 
 func main() {

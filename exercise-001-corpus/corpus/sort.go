@@ -2,7 +2,7 @@ package corpus
 
 import "sort"
 
-// sort by count
+// ByFreq sorts by Count
 type ByFreq []WordFreq
 
 func (b ByFreq) Len() int {
@@ -15,7 +15,7 @@ func (b ByFreq) Less(i, j int) bool {
 	return b[i].Count > b[j].Count
 }
 
-// sort by string value
+// ByStr sorts by string value
 type ByStr []WordFreq
 
 func (b ByStr) Len() int {
@@ -28,6 +28,9 @@ func (b ByStr) Less(i, j int) bool {
 	return b[i].Str > b[j].Str
 }
 
+// SortWordFreqs sorts a list of WordFreq
+// structs first by order of strings then by
+// order of count to ensure a consistent ordering.
 func SortWordFreqs(freqs []WordFreq) {
 	sort.Sort(ByStr(freqs))
 	sort.Sort(ByFreq(freqs))

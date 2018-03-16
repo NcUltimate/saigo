@@ -5,6 +5,9 @@ import (
 	"strings"
 )
 
+// GrepWords ingests a string and outputs an array
+// of 'words' in that string, which are sequences
+// of alphanumeric characters and single apostrophes
 func GrepWords(str string) []string {
 	if len(str) == 0 {
 		return []string{}
