@@ -10,7 +10,12 @@ import (
 
 // Phone ...
 type Phone struct {
-	Name string `json:"name"`
+	Name 			string 	`json:"name"`
+	ID 				string 	`json:"id"`
+	ImageURL 	string 	`json:"imageUrl"`
+	Age 			int 		`json:"age"`
+	Carrier 	string 	`json:"carrier"`
+	Snippet 	string 	`json:"snippet"`
 }
 
 var allPhones []Phone
